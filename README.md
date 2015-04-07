@@ -1,6 +1,11 @@
 Github webhooks testing
 =======================
 
+Rules
+-----
+
+This file will change a lot as it allows push testing.
+
 Auto-pull
 ---------
 
