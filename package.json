@@ -1,0 +1,10 @@
+{
+  "name": "webhooks",
+  "description": "Webhooks for project auto-update on github push event received.",
+  "author": "Raphaël Kiffer <raphael@smartnsoft.com>",
+  "dependencies": {
+    "body-parser": "^1.12.2",
+    "express": "^4.12.3",
+    "shelljs": "^0.4.0"
+  }
+}
