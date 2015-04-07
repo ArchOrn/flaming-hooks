@@ -12,7 +12,7 @@ exports.github = function (req, res) {
   console.log('Last commit: ' + head + ' has been pushed.');
   console.log('Pulling the latest commit...');
   // Test git existence
-  if (!which('git')) {
+  if (!shell.which('git')) {
     console.log('Error: git is missing!');
   } else {
     // Go to repository
