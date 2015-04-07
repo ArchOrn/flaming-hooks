@@ -31,7 +31,7 @@ app.route('/github').post(webhooks.github);
 
 // Register index route
 app.route('/').get(function (req, res) {
-  res.render('app/views/index');
+  res.render('app/views/index.html');
 })
 
 app.set('https-port', process.env.PORT || 5042);
