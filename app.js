@@ -35,5 +35,5 @@ app.set('http-port', process.env.PORT || 5042);
 
 // HTTP
 http.createServer(app).listen(app.get('http-port'), function () {
-  console.log('Express HTTP server listening on port ' + app.get('https-port'));
+  console.log('Express HTTP server listening on port ' + app.get('http-port'));
 });
