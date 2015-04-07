@@ -17,7 +17,7 @@ exports.github = function (req, res) {
     console.log('Error: git is missing!');
   } else {
     // Go to repository
-    console.log('Exec command: cd ' + config.repo);
+    console.log('Exec command: cd ' + config.github.repo);
     shell.cd(config.repo);
     // Pull changes
     console.log('Exec command: git pull');
