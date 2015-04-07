@@ -34,6 +34,6 @@ app.route('/github').post(webhooks.github);
 app.set('http-port', process.env.PORT || 5042);
 
 // HTTP
-http.createServer(options, app).listen(app.get('http-port'), function () {
+http.createServer(app).listen(app.get('http-port'), function () {
   console.log('Express HTTP server listening on port ' + app.get('https-port'));
 });
