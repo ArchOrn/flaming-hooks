@@ -15,13 +15,15 @@ exports.github = function (req, res) {
   if (!shell.which('git')) {
     console.log('Error: git is missing!');
   } else {
+    var options = {};
     // Go to repository
     console.log('Exec command: cd ' + config.github.repo);
-    shell.cd(config.repo);
+    shell.cd(options, config.repo);
     // Pull changes
     console.log('Exec command: git pull');
     shell.exec('git pull');
     // Go back to previous folder
+    shell.cd(options, '-');
     console.log('Done.');
   }
 };
