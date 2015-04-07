@@ -16,3 +16,4 @@ Test
 
 Add a line.
 Add another one.
+We will use nodemon to auto-restart node app.js on file change.
