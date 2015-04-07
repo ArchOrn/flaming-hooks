@@ -13,14 +13,17 @@ exports.github = function (req, res) {
   console.log('Pulling the latest commit...');
   // Test git existence
   if (!shell.which('git')) {
+    shell.exit(1);
     console.log('Error: git is missing!');
   } else {
     // Go to repository
+    console.log('Exec command: cd ' + config.repo);
     shell.cd(config.repo);
     // Pull changes
+    console.log('Exec command: git pull');
     shell.exec('git pull');
     // Go back to previous folder
-    shell.cd('-');
+    shell.exit(0);
     console.log('Done.');
   }
 };
