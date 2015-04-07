@@ -10,7 +10,7 @@ exports.github = function (req, res) {
   var message = req.body.head_commit.message;
   var repository = req.body.repository;
 
-  console.log(req.body);
+  console.log(config);
   console.log('Last commit: ' + head + ' has been pushed.');
   console.log('Message: ' + message);
   console.log('Pulling the latest commit...');
@@ -25,6 +25,7 @@ exports.github = function (req, res) {
     };
     if (repository.full_name == 'ArchOrn/flaming-hooks') {
       // Go to repository
+      console.log('Exec: cd ' + config.github.webhooks.repo);
       shell.cd(options, config.github.webhooks.repo);
       // Pull changes
       shell.exec('git pull');
@@ -33,6 +34,7 @@ exports.github = function (req, res) {
       console.log('Done.');
     } else if (repository.full_name == 'Jeekyx/angulurf') {
       // Go to repository
+      console.log('Exec: cd ' + config.github.urfmadness.repo);
       shell.cd(options, config.github.urfmadness.repo);
       // Pull changes
       shell.exec('git pull');
