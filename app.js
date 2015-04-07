@@ -2,7 +2,6 @@
 var express = require('express'),
 fs = require('fs'),
 http = require('http'),
-https = require('https'),
 bodyParser = require('body-parser');
 
 // Configure global path
@@ -32,16 +31,9 @@ app.use(express.static('www'));
 // Register webhooks route
 app.route('/github').post(webhooks.github);
 
-app.set('https-port', process.env.PORT || 5042);
+app.set('http-port', process.env.PORT || 5042);
 
-// HTTPS
-var options = {
-  key: fs.readFileSync('./ssl/server.key'),
-  cert: fs.readFileSync('./ssl/server.crt'),
-  ca: fs.readFileSync('./ssl/ca.crt'),
-  requestCert: true,
-  rejectUnauthorized: false
-};
-https.createServer(options, app).listen(app.get('https-port'), function () {
-  console.log('Express HTTPS server listening on port ' + app.get('https-port'));
+// HTTP
+http.createServer(options, app).listen(app.get('http-port'), function () {
+  console.log('Express HTTP server listening on port ' + app.get('https-port'));
 });
