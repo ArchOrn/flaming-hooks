@@ -6,10 +6,12 @@ var config = require(__base + 'app/config');
 
 // Webhooks endpoints
 exports.github = function (req, res) {
-  var head = req.body.head;
+  var head = req.body.head_commit.id;
+  var message = req.body.head_commit.message;
 
   console.log(req.body);
   console.log('Last commit: ' + head + ' has been pushed.');
+  console.log('Message: ' + message);
   console.log('Pulling the latest commit...');
   // Test git existence
   if (!shell.which('git')) {
@@ -17,10 +19,8 @@ exports.github = function (req, res) {
   } else {
     var options = {};
     // Go to repository
-    console.log('Exec command: cd ' + config.github.repo);
-    shell.cd(options, config.repo);
+    shell.cd(options, config.github.urfmadness.repo);
     // Pull changes
-    console.log('Exec command: git pull');
     shell.exec('git pull');
     // Go back to previous folder
     shell.cd(options, '-');
