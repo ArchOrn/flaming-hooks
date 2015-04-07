@@ -19,7 +19,6 @@ app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
 // CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -29,6 +28,11 @@ app.all('*', function(req, res, next) {
 
 // Register webhooks route
 app.route('/github').post(webhooks.github);
+
+// Register index route
+app.route('/').get(function (req, res) {
+  res.render('app/views/index');
+})
 
 app.set('https-port', process.env.PORT || 5042);
 
